@@ -1,4 +1,4 @@
-// Jogo de cartas Super Trunfo - Nivel novado.
+// Jogo de cartas Super Trunfo - Nivel novato.
 
 #include <stdio.h>
 
@@ -13,7 +13,7 @@ int main(){
         printf("\nPreencha os Dados da Carta 1\n");
         
         printf("Nome da Cidade:\n ");
-        scanf(" %49s[^\n]", &cidade_um);
+        scanf(" %49s[^\n]", &cidade_um); // Só pode ser executado com Cidade que só tem um nome, exemplo: Santos, Natal, Fortaleza, Manaus, etc.
 
         printf("Digite o Estado(A ou B):\n ");
         scanf(" %c", &estado_um);
@@ -49,7 +49,7 @@ int main(){
             printf("\nPreencha os Dados da Carta 2\n");
         
             printf("Nome da Cidade:\n ");
-            scanf(" %49s[^\n]", &cidade_dois);
+            scanf(" %49s[^\n]", &cidade_dois); // Só pode ser executado com Cidade que só tem um nome, exemplo: Santos, Natal, Fortaleza, Manaus, etc.
     
             printf("Digite o Estado(B):\n ");
             scanf(" %c", &estado_dois);
