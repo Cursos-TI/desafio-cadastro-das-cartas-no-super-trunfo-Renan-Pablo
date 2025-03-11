@@ -1,4 +1,4 @@
-// Jogo de cartas Super Trunfo - Nivel novato.
+// Jogo de cartas Super Trunfo - Nivel Aventureiro.
 
 #include <stdio.h>
 
@@ -7,13 +7,13 @@ int main(){
     // Variaveis que vão ser usadas
     char cidade_um[50], cidade_dois[50], estado_um, estado_dois, codigo_um[5], codigo_dois[5];
     int populacao_um, populacao_dois, turisticos_um, turisticos_dois;
-    float area_um, area_dois, pib_um, pib_dois;
+    float area_um, area_dois, pib_um, pib_dois, densipopu_um, densipopu_dois, pibcapta_um, pibcapta_dois;
 
     // Entrada e leitura de dados para primeira Carta.
         printf("\nPreencha os Dados da Carta 1\n");
         
         printf("Nome da Cidade:\n ");
-        scanf(" %49s[^\n]", &cidade_um); // Só pode ser executado com Cidade que só tem um nome, exemplo: Santos, Natal, Fortaleza, Manaus, etc.
+        scanf(" %49s[^\n]", &cidade_um); // Caso a cidade tenha nome composto use _ em vez de espaço
 
         printf("Digite o Estado(A ou B):\n ");
         scanf(" %c", &estado_um);
@@ -33,6 +33,11 @@ int main(){
         printf("Pontos Turisticos da Cidade:\n ");
         scanf("%d", &turisticos_um);
 
+        // Calcular Densidade Populacional e PIB per Capita da Primeira Carta.
+
+        densipopu_um = populacao_um / area_um;
+        pibcapta_um = pib_um / area_um;
+
         // Dados da Carta 1 que seram exibidas no terminal 
         
         printf("\n****** CARTA 1 ******");
@@ -44,12 +49,14 @@ int main(){
         printf("Área: %.2f km²\n", area_um);
         printf("PIB: %.2f Bilhões de reais\n", pib_um);
         printf("Número de Pontos Turísticos: %d\n", turisticos_um);
+        printf("Densidade Populacional: %f\n", densipopu_um);
+        printf("PIB per Capita: %f\n", pibcapta_um);
 
             // Entrada e leitura de dados para a segunda Carta.
             printf("\nPreencha os Dados da Carta 2\n");
         
             printf("Nome da Cidade:\n ");
-            scanf(" %49s[^\n]", &cidade_dois); // Só pode ser executado com Cidade que só tem um nome, exemplo: Santos, Natal, Fortaleza, Manaus, etc.
+            scanf(" %49s[^\n]", &cidade_dois); // Caso a cidade tenha nome composto use _ em vez de espaço
     
             printf("Digite o Estado(B):\n ");
             scanf(" %c", &estado_dois);
@@ -69,6 +76,11 @@ int main(){
             printf("Pontos Turisticos da Cidade:\n ");
             scanf("%d", &turisticos_dois);
     
+            // Calcular Densidade Populacional e PIB per Capita da Segunda Carta.
+
+            densipopu_dois = populacao_dois / area_dois;
+            pibcapta_dois = pib_dois / populacao_dois;
+
             // Dados da Carta 2 que seram exibidas no terminal 
             
             printf("\n****** CARTA 2 ******");
@@ -80,6 +92,8 @@ int main(){
             printf("Área: %.2f km²\n", area_dois);
             printf("PIB: %.2f Bilhões de reais\n", pib_dois);
             printf("Número de Pontos Turísticos: %d\n", turisticos_dois);
+            printf("Densidade Populacional: %f\n", densipopu_dois);
+            printf("PIB per Capita: %f\n", pibcapta_dois);
 
     return 0;
 }
