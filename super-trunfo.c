@@ -1,4 +1,4 @@
-// Jogo de cartas Super Trunfo - Nivel Mestre.
+// Jogo de cartas Super Trunfo - Nivel Mestre..
 #include <stdio.h>
 
 int main(){
