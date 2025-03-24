@@ -108,5 +108,20 @@ int main(){
     printf("PIB per Capita: Carta %d Venceu\n", pibcapta_um > pibcapta_um);
     printf("Super Poder: Carta %d Venceu\n", superpoder_um > superpoder_dois);
 
+    printf("\nComparação de cartas (Atributo: População)\n");
+    
+    // Nome da cidade e população que vão ser comparadas
+    printf("Carta 1: %s (SP): %lu\n", cidade_um, populacao_um);
+    printf("Carta 2: %s (RJ): %lu\n", cidade_dois, populacao_dois);
+    
+    // estrutura em if que vai mostrar qual carta é a ganhadora e mostrar no terminal para o usuario o resultado.
+    if (populacao_um > populacao_dois) {
+        printf("Resultado: Carta 1 (%s) venceu!\n", cidade_um);
+    } else if (populacao_dois > populacao_um) {
+        printf("Resultado: Carta 2 (%s) venceu!\n", cidade_dois);
+    } else {
+        printf("Resultado: Empate!\n");
+    }
+
     return 0;
 }
