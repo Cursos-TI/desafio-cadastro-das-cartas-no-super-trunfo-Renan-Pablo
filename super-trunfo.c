@@ -1,4 +1,4 @@
-// Jogo de cartas Super Trunfo - Nivel Mestre..
+// Super Trunfo - Desenvolvendo a Lógica - Nível Aventureiro.
 #include <stdio.h>
 
 int main(){
@@ -6,7 +6,6 @@ int main(){
     char cidade_um[50], cidade_dois[50], estado_um, estado_dois, codigo_um[5], codigo_dois[5];
     unsigned long int populacao_um, populacao_dois, turisticos_um, turisticos_dois;
     float area_um, area_dois, pib_um, pib_dois, densipopu_um, densipopu_dois, pibcapta_um, pibcapta_dois, superpoder_um, superpoder_dois;
-    int resultado_popu1, resultado_area1, resultado_pib1, resultado_turis1, resultado_densi1, resultado_pibcapta1, resultado_superpoder1;
 
     // Entrada e leitura de dados para a primeira Carta.
     printf("\nPreencha os Dados da Carta 1\n");
@@ -37,7 +36,7 @@ int main(){
     pibcapta_um = pib_um / (populacao_um + 0.0001);
 
     // Super Poder: Somar todos os atributos numéricos da Carta1.
-    superpoder_um = populacao_um + area_um + pib_um + turisticos_um + pibcapta_um + (1.0 / densipopu_um);
+    superpoder_um = populacao_um + area_um + pib_um + turisticos_um + pibcapta_um - densipopu_um;
 
     // Entrada e leitura de dados para a segunda Carta.
     printf("\nPreencha os Dados da Carta 2\n");
@@ -68,7 +67,7 @@ int main(){
     pibcapta_dois = pib_dois / (populacao_dois + 0.0001);
 
     // Super Poder: Somar todos os atributos numéricos da Carta2.
-    superpoder_dois = (float)populacao_dois + area_dois + pib_dois + turisticos_dois + pibcapta_dois + (1.0 / densipopu_dois);
+    superpoder_dois = (float)populacao_dois + area_dois + pib_dois + turisticos_dois + pibcapta_dois - densipopu_dois;
 
     // Dados da Carta 1
     printf("\n****** CARTA 1 ******");
@@ -100,13 +99,15 @@ int main(){
 
     printf("\n*** COMPARAÇÃO DAS CARTAS ***\n");
 
-    printf("População: Carta %d Venceu\n", populacao_um > populacao_dois);
-    printf("Área: Carta %d Venceu\n", area_um > area_dois);
-    printf("PIB: Carta %d Venceu\n", pib_um > pib_dois);
-    printf("Pontos Turísticos: Carta %d Venceu\n", turisticos_um > turisticos_dois);
-    printf("Densidade Populacional: Carta %d Venceu\n", densipopu_um > densipopu_dois);
-    printf("PIB per Capita: Carta %d Venceu\n", pibcapta_um > pibcapta_um);
-    printf("Super Poder: Carta %d Venceu\n", superpoder_um > superpoder_dois);
+    printf("População: Carta %d Venceu\n", (populacao_um > populacao_dois) ? 1 : 2);
+    printf("Área: Carta %d Venceu\n", (area_um > area_dois) ? 1 : 2);
+    printf("PIB: Carta %d Venceu\n", (pib_um > pib_dois) ? 1 : 2);
+    printf("Pontos Turísticos: Carta %d Venceu\n", (turisticos_um > turisticos_dois) ? 1 : 2);
+    printf("Densidade Populacional: Carta %d Venceu\n", (densipopu_um < densipopu_dois) ? 1 : 2);
+    printf("PIB per Capita: Carta %d Venceu\n", (pibcapta_um > pibcapta_um) ? 1 : 2);
+    printf("Super Poder: Carta %d Venceu\n", (superpoder_um > superpoder_dois) ? 1 : 2);
+    
+    // Comparação das cartas.
 
     printf("\nComparação de cartas (Atributo: População)\n");
     
@@ -122,6 +123,85 @@ int main(){
     } else {
         printf("Resultado: Empate!\n");
     }
+    
+    // Vamos Comparar um atributo por vez nas cartas usando um pequeno menu.
+    int escolhaComparacao;
 
+    printf("\n*** MENU INTERATIVO ***\n");
+    printf("Escolha uma opção:\n");
+    printf("1° Nome das cidades.\n");
+    printf("2° População.\n");
+    printf("3° Área.\n");
+    printf("4° PIB.\n");
+    printf("5° Número de pontos turísticos.\n");
+    printf("6° Densidade.\n");
+    printf("Escolha: ");
+    scanf("%d", &escolhaComparacao);
+
+    switch (escolhaComparacao)
+    {
+    case 1:
+        printf("\nCarta 1: %s - Carta 2: %s.\n", cidade_um, cidade_dois);
+        break;
+    case 2:
+        if (populacao_um > populacao_dois)
+        {
+            printf("\nCarta 1: %s - Carta 2: %s.\n", cidade_um, cidade_dois);
+            printf("Atributo: População.\n");
+            printf("Valor dos atributos da Carta 1: (%lu) e Carta 2: (%lu).\n", populacao_um, populacao_dois);
+            printf("A Carta %d (%s) VENCEU!\n", (populacao_um > populacao_dois) ? 1 : 2, cidade_um);
+        } else{
+            printf("EMPATE!\n");
+        }
+            break;
+    case 3:
+        if (area_um > area_dois)
+        {
+            printf("\nCarta 1: %s - Carta 2: %s.\n", cidade_um, cidade_dois);
+            printf("Atributo: Área.\n");
+            printf("Valor dos atributos da Carta 1: (%.2f) e Carta 2: (%.2f).\n", area_um, area_dois);
+            printf("A Carta %d (%s) VENCEU!\n", (area_um > area_dois) ? 1 : 2, cidade_um);
+        } else{
+            printf("EMPATE!\n");
+        }
+            
+            break;
+    case 4:
+        if (pib_um > pib_dois)
+        {
+            printf("\nCarta 1: %s - Carta 2: %s.\n", cidade_um, cidade_dois);
+            printf("Atributo: PIB.\n");
+            printf("Valor dos atributos da Carta 1: (%.2f) e Carta 2: (%.2f).\n", pib_um, pib_dois);
+            printf("A Carta %d (%s) VENCEU!\n", (pib_um > pib_dois) ? 1 : 2, cidade_um);     
+        } else{
+            printf("EMPATE!\n");
+        }
+            break;
+    case 5:
+        if (turisticos_um > turisticos_dois)
+        {
+            printf("\nCarta 1: %s - Carta 2: %s.\n", cidade_um, cidade_dois);
+            printf("Atributo: Pontos Turísticos.\n");
+            printf("Valor dos atributos da Carta 1: (%lu) e Carta 2: (%lu).\n", turisticos_um, turisticos_dois);
+            printf("A Carta %d (%s) VENCEU!\n", (turisticos_um > turisticos_dois) ? 1 : 2, cidade_um);
+        } else{
+            printf("EMPATE!\n");
+        }
+            break;
+    case 6:
+        if (densipopu_um < densipopu_dois)
+        {
+            printf("\nCarta 1: %s - Carta 2: %s.\n", cidade_um, cidade_dois);
+            printf("Atributo: Área.\n");
+            printf("Valor dos atributos da Carta 1: (%d) e Carta 2: (%d).\n", densipopu_um, densipopu_dois);
+            printf("A Carta %d (%s) VENCEU!\n", (densipopu_um < densipopu_dois) ? 1 : 2, cidade_um);
+        } else{
+            printf("EMPATE!\n");
+        }
+            break;       
+    default:
+        printf("ESCOLHA ERRADA.\n");
+        break;
+    }
     return 0;
 }
